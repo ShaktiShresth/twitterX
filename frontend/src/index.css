@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Custom theme */
+@theme {
+  --color-primary: #1d9bf0;
+  --color-secondary: #181818;
+}
+
+/* Custom dark theme */
+[data-theme="black"] {
+  --color-primary: #1d9bf0;
+  --color-secondary: #181818;
+  --color-base-100: #000000;
+}
