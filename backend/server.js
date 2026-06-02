@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({ limit: "5mb" })); // limit must not be too high to avoid DoS attack
 app.use(express.urlencoded({ extended: true })); //parse form data
 app.use(cookieParser());
 
