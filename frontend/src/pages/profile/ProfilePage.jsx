@@ -14,7 +14,7 @@ import { MdEdit } from "react-icons/md";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { formatMemberSinceDate } from "../../utils/date";
 
-import useFollow from "../../utils/useFollow";
+import useFollow from "../../hooks/useFollow";
 import toast from "react-hot-toast";
 
 const ProfilePage = () => {

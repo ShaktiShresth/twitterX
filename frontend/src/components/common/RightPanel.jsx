@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import useFollow from "../../utils/useFollow";
+import useFollow from "../../hooks/useFollow";
 
 import LoadingSpinner from "./LoadingSpinner";
 import RightPanelSkeleton from "../skeletons/RightPanelSkeleton";
 
+
 const RightPanel = () => {
 	const {data:suggestedUsers, isLoading} = useQuery({
 		queryKey: ["suggestedUsers"],
+
 		queryFn: async () => {
 			try {
 				const res = await fetch("/api/users/suggested");
