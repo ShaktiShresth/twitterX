@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 
@@ -17,9 +18,9 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const PORT = process.env.PORT || 5000;
-
 const app = express();
+const PORT = process.env.PORT || 5000;
+const __dirname = path.resolve();
 
 app.use(express.json({ limit: "5mb" })); // limit must not be too high to avoid DoS attack
 app.use(express.urlencoded({ extended: true })); //parse form data
@@ -29,6 +30,14 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/notifications", notificationRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+  app.get(/.*/, (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log("Twitter/X's server is running on port:", PORT);
