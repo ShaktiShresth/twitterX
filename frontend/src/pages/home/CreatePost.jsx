@@ -44,7 +44,7 @@ const CreatePost = () => {
 		onSuccess: () => {
 			setText("");
 			setImg(null);
-			toast.success("Post created successfully.");
+			toast.success("Your post has been created.");
 			queryClient.invalidateQueries({ queryKey: ["posts"] });
 		},
 	});
@@ -95,7 +95,7 @@ const CreatePost = () => {
 				<div className='flex justify-between border-t py-2 border-t-gray-700'>
 					<div className='flex gap-1 items-center'>
 						<CiImageOn
-							className='fill-primary w-6 h-6 cursor-pointer'
+							className='fill-primary w-6 h-6 cursor-pointer hover:scale-110 transition-all duration-300 delay-75'
 							onClick={() => imgRef.current.click()}
 						/>
 						<BsEmojiSmileFill className='fill-primary w-5 h-5 cursor-pointer' />

@@ -26,7 +26,7 @@ const Sidebar = () => {
 			}
 		},
 		onSuccess: () => {
-			toast.success("Logged out successfully.");
+			toast.success("Your account has been logged out.");
 			queryClient.invalidateQueries({ queryKey: ["authUser"] });
 		},
 		onError: () => {
@@ -88,7 +88,7 @@ const Sidebar = () => {
 								<p className='text-slate-500 text-sm'>@{authUser?.username}</p>
 							</div>
 							<BiLogOut 
-								className='w-5 h-5 cursor-pointer' 
+								className='w-5 h-5 cursor-pointer transition-all duration-300 delay-75 hover:text-red-400 hover:scale-110' 
 								onClick={(e) =>{ 
 									e.preventDefault();
 									logout();
